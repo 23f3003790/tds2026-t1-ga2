@@ -1,0 +1,21 @@
+name: Cache Demo
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Cache dependencies
+      id: prime-cache-1b90b06
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: cache-1b90b06
+
+    - name: Show cache result
+      run: echo "Cache hit? ${{ steps.prime-cache-1b90b06.outputs.cache-hit }}"
