@@ -1,21 +1,29 @@
-name: Cache Demo
+name: name: Cache Demo
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Cache dependencies
-      id: prime-cache-1b90b06
-      uses: actions/cache@v4
-      with:
-        path: node_modules
-        key: cache-1b90b06
+      - name: Create dummy file
+        run: |
+          mkdir -p cache-folder
+          echo "Hello Cache" > cache-folder/file.txt
 
-    - name: Show cache result
-      run: echo "Cache hit? ${{ steps.prime-cache-1b90b06.outputs.cache-hit }}"
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: cache-folder
+          key: cache-1b90b06
+
+      - name: prime-cache-1b90b06
+        run: echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
