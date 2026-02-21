@@ -1,0 +1,16 @@
+name: 23f3003790@ds.study.iitm.ac.in
+
+on:
+  push:          # This means the action will run whenever you push code
+    branches:
+      - main     # On the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest   # This is the runner (robot machine)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # This gets your code
+
+      - name: 23f3003790@ds.study.iitm.ac.in
+        run: echo "Hello, world!"  # This prints a message
