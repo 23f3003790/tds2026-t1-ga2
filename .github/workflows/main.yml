@@ -1,0 +1,11 @@
+name: 23f3003790@ds.study.iitm.ac.in
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 23f3003790@ds.study.iitm.ac.in
+        run: echo "Hello from Actions!"
